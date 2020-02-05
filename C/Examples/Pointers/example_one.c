@@ -2,7 +2,7 @@
 
 int main() 
 {
-	int num = 10;
+	int num = 100;
 	printf("Value of variable num is: %d", num);
 	/* To print the address of a variable we use %p
 	 * format specifier and amersand (&) sign just 
