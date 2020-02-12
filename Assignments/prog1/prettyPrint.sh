@@ -57,7 +57,7 @@ done
 # and convert the TEMP_OUT_FILE to a PostScript file, with 2 columns. 
 # The -p flag for the enscript command specifies the output for the PostScript file. In our case,
 # ./printMe.ps
-enscript ${TEMP_OUT_FILE} -columns=2 -p ${POST_SCRIPT_FILE}
+enscript ${TEMP_OUT_FILE} --columns=2 -p ${POST_SCRIPT_FILE}
 
 # Convert the POST_SCRIPT_FILE (printMe.ps) to a PDF file
 # By default, the ps2pdf command will use the file name from the PostScript file
