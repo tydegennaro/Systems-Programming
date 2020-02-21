@@ -2,26 +2,29 @@
 #include <string.h>
 #include <ctype.h>
 
-int countCharacters(char buffer[], char letter){
-    int count = 0;
-    for (int i = 0; i < strlen(buffer); i++)
+int frequency[26];
+
+void countCharacters(char letter){
+    char upperCaseLetter = toupper(letter);
+    if (upperCaseLetter >= 'A' && upperCaseLetter <= 'Z')
     {
-        if (tolower(buffer[i]) == letter)
-        {
-            count += 1;
-        }
+        int order = upperCaseLetter - 'A';
+        frequency[order]++;
     }
-    return count;
 }
 
 int main() 
 {
-    char buffer[1000];
+    int c = fgetc(stdin);
     char letters[] = "abcdefghijklmnopqrstuvwxyz";
-    fgets(buffer, 1000, stdin);
+    while (c != EOF)
+    {
+        countCharacters(c);
+        c = fgetc(stdin);
+    }
     for (int i = 0; i < strlen(letters); i++)
     {
-        printf("%c: %d\n",  toupper(letters[i]), countCharacters(buffer, letters[i]));
+        printf("%c: %d\n",  toupper(letters[i]), frequency[i]);
     }
     return 0; 
 }
