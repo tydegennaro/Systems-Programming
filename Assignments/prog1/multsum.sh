@@ -19,7 +19,7 @@
 integer="^-?[0-9]+$"
 
 # Regex pattern to enure the argument passed is a positive integer
-positiveInteger="^[0-9]+$"
+positiveInteger="^[0-9]*[1-9][0-9]*$"
 
 # Usage message
 usage="Usage: ./multsum START STOP MOD"
@@ -42,8 +42,8 @@ elif [[ ! $3 =~ $positiveInteger ]]; then
     exit
 fi
 
-START=${1//-/}
-STOP=${2//-/}
+START=${1}
+STOP=${2}
 MOD=${3}
 
 # Function: isMultSum()
@@ -53,13 +53,14 @@ isMultSum() {
 	sumOfDigits=0
 	productOfDigits=1
 	# Variable to store the arugment passed
-	number=$1
-	lengthOfNumber=${#number}
+	absNumber=${1#-}
+	#echo ${absNumber}
+	lengthOfNumber=${#absNumber}
 	# For each digit in the number `number`
 	for (( j=0; j<${lengthOfNumber}; j++ )); do
-		digit=${number:$j:1}
-		sumOfDigits=$(( ${sumOfDigits} + ${digit} ))
-		productOfDigits=$(( ${productOfDigits} * ${digit} ))
+		digit=${absNumber:$j:1}
+		sumOfDigits=$(( ${sumOfDigits}+${digit}  ))
+		productOfDigits=$(( ${productOfDigits}*${digit} ))
 	done
 	# Check if the number is a multsum
 	if [[ $(($sumOfDigits % $MOD)) == $(($productOfDigits % $MOD)) ]]
