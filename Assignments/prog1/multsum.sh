@@ -1,58 +1,80 @@
 #!/bin/bash
 
-# Validate user input
+# Course: 
+#   CSC 399: Systems Programming
+
+# Program Name: 
+#   multsum.sh
+
+# Program Purpose:
+#    Program will print which numbers are a multsum, given a range
+#    `START` to `FINISH` and a number to `MOD` by.
+
+# Author(s):
+#   Kyle DeGennaro
+#   Tyler DeGennaro
+#   Joey Germain
+
+# Regex pattern to enure the argument passed is an integer
 integer="^-?[0-9]+$"
-positive_integer="^[0-9]+$"
-usage="Usage: ./multsum.sh START STOP MOD"
+
+# Regex pattern to enure the argument passed is a positive integer
+positiveInteger="^[0-9]+$"
+
+# Usage message
+usage="Usage: ./multsum START STOP MOD"
+
+# Validate user input, ensure there are three arguments passed
 if [ "$#" -ne "3" ]; then
     echo $usage
     exit
+# Check to make sure argument one `START` is an integer
 elif [[ ! $1 =~ $integer ]]; then
     echo $usage
-    echo START was not a valid integer.
     exit
+# Check to make sure argument two `STOP` is an integer
 elif [[ ! $2 =~ $integer ]]; then
     echo $usage
-    echo STOP was not a valid integer.
     exit
-elif [[ ! $3 =~ $integer ]]; then
+# Check to make sure argument three `MOD` is a positive integer
+elif [[ ! $3 =~ $positiveInteger ]]; then
     echo $usage
-    echo MOD was not a valid integer.
-    exit
-elif [[ ! $3 =~ $positive_integer ]]; then
-    echo $usage
-    echo MOD must be positive.
     exit
 fi
 
-# Let's give those parameters some names and strip out negatives
-start=${1//-/}
-stop=${2//-/}
-mod=$3
+START=${1//-/}
+STOP=${2//-/}
+MOD=${3}
 
-# Define a function that calculates if a number is multsum
-is_multsum() {
-    sum_of_digits=0
-    product_of_digits=1
-    for (( num=$1; num>0; num /= 10 )); do
-        last_digit=$(($num % 10));
-        sum_of_digits=$(( $sum_of_digits + $last_digit ))
-        product_of_digits=$(( $product_of_digits * $last_digit ))
-    done
-    a=$(( $product_of_digits % $mod ))
-    b=$(( $sum_of_digits % $mod ))
-    if [ "$a" -eq "$b" ]; then
-        return 1
-    else
-        return 0
-    fi
+# Function: isMultSum()
+# Determines whether or not the argument passed
+# `$1` is a multsum number. 
+isMultSum() {
+	sumOfDigits=0
+	productOfDigits=1
+	# Variable to store the arugment passed
+	number=$1
+	lengthOfNumber=${#number}
+	# For each digit in the number `number`
+	for (( j=0; j<${lengthOfNumber}; j++ )); do
+		digit=${number:$j:1}
+		sumOfDigits=$(( ${sumOfDigits} + ${digit} ))
+		productOfDigits=$(( ${productOfDigits} * ${digit} ))
+	done
+	# Check if the number is a multsum
+	if [[ $(($sumOfDigits % $MOD)) == $(($productOfDigits % $MOD)) ]]
+	then
+		return 1
+	else
+		return 0
+	fi	
 }
 
-# Print primes
-# for i in $(seq $start $stop); do
-for (( i=$start; i<=$stop; i++ )); do
-    is_multsum $i
-    if [ "$?" -eq "1" ]; then
-        echo $i
-    fi
+for (( i=${START}; i<=${STOP}; i++ )); do
+	isMultSum $i
+	# If the number is a multsum (1 is returned)
+	if [[ ${?} == 1 ]]; then
+		# print the number
+		echo ${i}
+	fi
 done
