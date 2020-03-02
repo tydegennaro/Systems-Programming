@@ -52,9 +52,8 @@ MOD=${3}
 isMultSum() {
 	sumOfDigits=0
 	productOfDigits=1
-	# Variable to store the arugment passed
+	# Variable to store the arugment passed, take the absolute value
 	absNumber=${1#-}
-	#echo ${absNumber}
 	lengthOfNumber=${#absNumber}
 	# For each digit in the number `number`
 	for (( j=0; j<${lengthOfNumber}; j++ )); do
