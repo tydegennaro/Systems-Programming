@@ -6,8 +6,9 @@
 #   mybackup.sh
 
 # Program Purpose:
-#   This script takes two integers as arguments,
-#   and prints all prime numbers from `START_NUMBER` ($1) to `END_NUMBER` ($2)
+#   This script makes a backup of recently modified files in
+#   your home directory. You can (optionally) specify how far
+#   back to go (in hours) for a file to be consired recent
 
 # Author(s):
 #   Kyle DeGennaro
