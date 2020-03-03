@@ -49,22 +49,17 @@ int getGoldbach(int *primes, int size, int n) {
 int main() {
   int n;
   int numPrimes = 0;
-
   // Read in a new upper bound
   scanf("%d", &n);
   int *primes = malloc(n * sizeof(int));
-
   // Get primes up to the upper bound we read in
   getPrimes(n, &primes, &numPrimes);
-
   // Keep reading in new numbers until we get a 0
   while (n != 0) {
     // Compute the prime breakdown n = lowPrime + highPrime
 	int lowPrime = getGoldbach(primes, numPrimes, n);
 	int highPrime = n - lowPrime;	
-
     printf("%d = %d + %d\n", n, lowPrime, highPrime);
-
     // Get next value
     scanf("%d", &n);
 	if (n > primes[numPrimes - 1]) {
@@ -72,6 +67,5 @@ int main() {
 		getPrimes(n, &primes, &numPrimes);
 	}
   }
-
   return 0;
 }

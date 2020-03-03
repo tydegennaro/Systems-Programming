@@ -1,5 +1,5 @@
 /******
- * Authors: YOUR NAME (it is - or will be - your code)
+ * Authors: Kyle DeGennaro, Tyler DeGennaro, Joey Germain
  * Tokenizer:
  *    This collection of functions takes as input a single line of text
  *    and tokenizes that text.  Each call to getNextToken() returns the
@@ -29,7 +29,7 @@ void startToken(char* line) {
   int length = strlen(line);
 
   // Type cast to pointer char
-  // Length + 1 here because strlen Does not count 
+  // Length + 1 here because strlen Does not account for 
   // the '/0' byte at the end of the string
   // When in doubt, add an extra byte
   lineCopy = (char*) realloc(lineCopy, (length+1) * sizeof(char));
@@ -53,11 +53,11 @@ aToken getNextToken() {
     res.type = EOL;
   } 
   else if (*position == '\"') {
-    // Move the position forward one so we dont account for the ` " `
+    // Move the position forward one so we dont account for the `"`
     position++;
     res.type = DOUBLE_QUOTE;
     res.start = position;
-    // While we are on the current token, and our position is not a ` " `
+    // While we are on the current token, and our position is not a `"`
     // Increment the position by one. 
     while (*position != '\"' && *position != 0) position++;
     if (*position == 0) {
