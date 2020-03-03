@@ -2,11 +2,11 @@
 
 #   CSC 399: Systems Programming
 
-# Program Name: 
+# Program Name:
 #   mybackup.sh
 
 # Program Purpose:
-#   This script takes two integers as arguments, 
+#   This script takes two integers as arguments,
 #   and prints all prime numbers from `START_NUMBER` ($1) to `END_NUMBER` ($2)
 
 # Author(s):
@@ -34,4 +34,4 @@ fi
 mkdir -p $HOME/Backups
 
 # Create the archive
-find $HOME -mmin -$(( age * 60 )) | tar -cf $HOME/Backups/backup.$(date +%Y.%m.%d.%H.%M).tgz -T -
+find $HOME -mmin -$(( age * 60 )) | tail -n +2 | tar -cf $HOME/Backups/backup.$(date +%Y.%m.%d.%H.%M).tgz -T -
