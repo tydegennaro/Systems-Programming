@@ -1,0 +1,41 @@
+Token:  BASIC: A
+Token:  BASIC: very
+Token:  BASIC: simple
+Token:  BASIC: test
+Token:  BASIC: Let
+Token:  BASIC: us
+Token:  BASIC: try
+Token:  BASIC: regular
+Token:  BASIC: tokens
+Token:  BASIC: first.
+Token:  BASIC: And
+Token:  BASIC: then
+Token:  BASIC: a
+Token:  BASIC: few
+Token:  BASIC: with
+Token:  BASIC: string
+Token:  BASIC: quotes.
+Token:  BASIC: After,
+Token:  BASIC: we
+Token:  BASIC: shall
+Token:  BASIC: have
+Token:  BASIC: a
+Token:  BASIC: different
+Token:  BASIC: file
+Token:  BASIC: for
+Token:  BASIC: more
+Token:  BASIC: trickier
+Token:  BASIC: tests.
+Token:  BASIC: Bill
+Token:  BASIC: once
+Token:  BASIC: said,
+Token: DOUBLE: There is nothing better I like than p, b, & j sandwiches for lunch.
+Token:  BASIC: But
+Token:  BASIC: really?
+Token:  BASIC: Is
+Token:  BASIC: there
+Token: DOUBLE: nothing better?
+Token:  BASIC: Not
+Token:  BASIC: even
+Token:  BASIC: a
+Token: SINGLE: veggie quesadilla?
