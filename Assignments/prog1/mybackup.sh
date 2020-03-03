@@ -34,4 +34,4 @@ fi
 mkdir -p $HOME/Backups
 
 # Create the archive
-find $HOME -mmin -$(( age * 60 )) | tar -cf backup.$(date +%Y.%m.%d.%H.%M).tgz -T -
+find $HOME -mmin -$(( age * 60 )) | tar -cf $HOME/Backups/backup.$(date +%Y.%m.%d.%H.%M).tgz -T -
