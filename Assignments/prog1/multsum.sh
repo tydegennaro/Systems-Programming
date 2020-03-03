@@ -73,7 +73,7 @@ isMultSum() {
 for (( i=${START}; i<=${STOP}; i++ )); do
 	isMultSum $i
 	# If the number is a multsum (1 is returned)
-	if [[ ${?} == 1 ]]; then
+	if [[ ${?} == 1 && ${i} != 0 ]]; then
 		# print the number
 		echo ${i}
 	fi
