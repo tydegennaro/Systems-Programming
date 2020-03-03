@@ -1,3 +1,18 @@
+//   CSC 399: Systems Programming
+
+// Program Name: 
+//   multsum.c
+
+// Program Purpose:
+//   Program will print which numbers are a multsum, given a range
+//   `START` to `FINISH` and a number to `MOD` by.
+
+// Author(s):
+//   Kyle DeGennaro
+//   Tyler DeGennaro
+//   Joey Germain
+
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
