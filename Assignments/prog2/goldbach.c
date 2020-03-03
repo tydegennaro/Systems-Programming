@@ -1,9 +1,25 @@
+//   CSC 399: Systems Programming
+
+// Program Name: 
+//   goldbach.c
+
+// Program Purpose:
+//   This program reads in numbers from stdin
+// 	 and computes goldbachs conjecture.
+
+// Author(s):
+//   Kyle DeGennaro
+//   Tyler DeGennaro
+//   Joey Germain
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
-// Calculate the primes up to upperBound
+// Function: getPrimes(int upperBound, int **primes, int *numPrimes)
+// Calculates the primes up to upperBound
 void getPrimes(int upperBound, int **primes, int *numPrimes) {
+	
 	// Get the starting index
 	int i = 2;
 	if (*numPrimes) {
@@ -19,6 +35,7 @@ void getPrimes(int upperBound, int **primes, int *numPrimes) {
 				break;
 			}
 		}
+		
 		// If i is prime, then add it to the end of primes
 		if (isPrime) {
 			(*primes)[(*numPrimes)++] = i;
@@ -26,7 +43,8 @@ void getPrimes(int upperBound, int **primes, int *numPrimes) {
 	}
 }
 
-// Calculate the prime breakdown of n using an array of precalculated primes of size 'size'
+// Function: getGoldbach(int *primes, int size, int n)
+// Calculates the prime breakdown of n using an array of precalculated primes of size 'size'
 // Returns the lower of the two primes that make up n
 int getGoldbach(int *primes, int size, int n) {
 	int i = 0;
